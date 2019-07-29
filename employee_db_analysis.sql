@@ -54,16 +54,9 @@ JOIN dept_emp AS d_emp ON emp.emp_no = d_emp.emp_no
 JOIN departments AS d ON d_emp.dept_no = d.dept_no
 WHERE dept_name = 'Sales' OR dept_name = 'Development';
 
--- In descending order, list the frequency count of employee last names, 
--- i.e., how many employees share each last name.
+-- In descending order, list the frequency count of employee last names 
 
 SELECT last_name, COUNT(last_name)
 FROM employees
 GROUP BY last_name
 ORDER BY COUNT(last_name) DESC;
-
--- Create a bar chart of average salary by title.
-SELECT title, round(avg(salary),2)
-FROM salaries AS s
-JOIN titles AS t ON s.emp_no=t.emp_no 
-GROUP BY title
